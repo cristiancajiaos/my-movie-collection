@@ -12,10 +12,10 @@ import { MainLayoutComponent } from './components/layout/main-layout/main-layout
 import { AppRoutingModule } from "./app-routing.module";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ToastrModule } from "ngx-toastr";
-import { LayoutModule } from "./components/layout.module";
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { LayoutModule } from './components/layout/layout.module';
 
 @NgModule({
   declarations: [

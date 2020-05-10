@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
-    loadChildren: './components/layout.module#LayoutModule'
+    loadChildren: './components/layout/layout.module#LayoutModule'
   }
 ];
 
