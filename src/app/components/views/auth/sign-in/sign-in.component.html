@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="text-uppercase mb-4">Inicio de sesión</h1>
+
+        <form [formGroup]="form" (ngSubmit)="signIn()">
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="form-control"
+              placeholder="ejemplo@mail.com" formControlName="email"
+              [ngClass]="{'is-invalid':email.touched && email.invalid,'is-valid':email.valid}"/>
+              <div class="invalid-feedback d-block" *ngIf="email.touched && email.hasError('required')">
+                Este campo es obligatorio
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="pwd">Contraseña:</label>
+            <input type="password" id="pwd" name="pwd" class="form-control"
+              formControlName="pwd" [ngClass]="{'is-invalid':pwd.touched && pwd.invalid,'is-valid':pwd.valid}"/>
+            <div class="invalid-feedback d-block" *ngIf="pwd.touched && pwd.hasError('required')">
+              Este campo es obligatorio
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block btn-lg text-uppercase" [disabled]="form.invalid">
+              Iniciar sesión
+            </button>
+          </div>
+        </form>
+
+        <p>¿No tienes una cuenta? <a href="#" [routerLink]="['/register']">¡Crea la tuya ahora!</a></p>
+
+        <p>¿Se te olvidó la contraseña? <a href="#" [routerLink]="['/password-reset']">Ingresa aquí para resetearla</a>.</p>
+
+
+        <hr/>
+
+        <p>¿Quieres iniciar sesión con tu cuenta de Google?</p>
+
+        <button class="btn btn-danger btn-lg btn-block text-uppercase">
+          Iniciar sesión con Google
+        </button>
+
+        <hr/>
+      </div>
+    </div>
+  </div>
+</div>

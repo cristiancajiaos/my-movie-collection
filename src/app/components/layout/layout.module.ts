@@ -7,6 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { MainModule } from '../views/main/main.module';
 
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthModule } from '../views/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     NgbCollapseModule,
     MainModule,
-    LayoutRoutingModule
+    AuthModule,
+    LayoutRoutingModule,
   ],
   exports: [
     NavbarComponent,

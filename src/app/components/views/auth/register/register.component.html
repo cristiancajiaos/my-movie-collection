@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="text-uppercase mb-4">Registro de usuario</h1>
+
+        <form [formGroup]="form" (ngSubmit)="createAccount()">
+          <div class="form-group form-group-lg">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="form-control"
+              placeholder="ejemplo@mail.com" formControlName="email"
+              [ngClass]="{'is-invalid':email.touched && email.invalid, 'is-valid':email.valid}"/>
+            <div class="invalid-feedback d-block" *ngIf="email.touched && email.hasError('required')">
+              Este campo es obligatorio
+            </div>
+            <div class="invalid-feedback d-block" *ngIf="email.touched && email.hasError('email')">
+              El correo introducido es inválido
+            </div>
+          </div>
+          <div class="form-group form-group-lg">
+            <label for="pwd">Contraseña</label>
+            <input type="password" id="pwd" name="pwd" class="form-control"
+              placeholder="Mínimo 8 caracteres de largo" formControlName="pwd"
+              [ngClass]="{'is-invalid':pwd.touched && pwd.invalid,'is-valid':pwd.valid}"/>
+            <div class="invalid-feedback d-block" *ngIf="pwd.touched && pwd.hasError('required')">
+              Este campo es obligatorio
+            </div>
+            <div class="invalid-feedback d-block" *ngIf="pwd.touched && pwd.hasError('minlength')">
+              La contraseña debe tener como mínimo 8 caracteres de largo
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-lg btn-block" [disabled]="form.invalid">
+              Crear cuenta
+            </button>
+          </div>
+        </form>
+
+        <hr/>
+
+        <p>¿Tienes una cuenta? No problemo: <a href="#" [routerLink]="['/sign-in']">Inicia sesión aquí</a>.</p>
+
+        <hr/>
+      </div>
+    </div>
+  </div>
+</div>
