@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
   <a class="navbar-brand text-uppercase" href="#" [routerLink]="['/home']">
     My Movie Collection
   </a>
@@ -7,17 +7,40 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed">
-    <ul class="navbar-nav ml-auto">
+    <!-- Con registro -->
+    <ul class="navbar-nav ml-auto" *ngIf="user$ | async as user; else logout">
       <li class="nav-item">
-        <a href="#" class="nav-link" [routerLink]="['/sign-in']" [routerLinkActive]="['active']">
-          Iniciar sesión
+        <a href="#" class="nav-link" (click)="closeIsNotCollapsed()">
+          {{user?.email}}
         </a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link" [routerLink]="['/register']" [routerLinkActive]="['active']">
-          Registrarse
+        <a href="#" class="nav-link" (click)="logOut()">
+          Cerrar Sesión
         </a>
       </li>
     </ul>
+    <ng-template #logout>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="#" class="nav-link" [routerLink]="['/sign-in']"
+            [routerLinkActive]="['active']" (click)="closeIsNotCollapsed()">
+            Iniciar sesión
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" [routerLink]="['/register']"
+          [routerLinkActive]="['active']" (click)="closeIsNotCollapsed()">
+            Registrarse
+          </a>
+        </li>
+      </ul>
+    </ng-template>
+    <!-- Sin registro -->
+    <!--
+    <span *ngIf="user$">
+      {{user$ | async | json}}
+    </span>
+    -->
   </div>
 </nav>

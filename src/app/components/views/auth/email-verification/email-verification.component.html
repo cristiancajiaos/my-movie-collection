@@ -1,22 +1,38 @@
-<div class="row">
-  <div class="col-md-6 offset-md-3">
-    <div class="card">
-      <div class="card-body">
-        <h1 class="text-uppercase mb-4">Verifica tu cuenta</h1>
+<ng-template #loading>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <p>Cargando...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
 
-        <p>Sr. Usuario con el correo <strong>ejemplo@mail.com</strong>: Su misión, que deberá aceptar, es ir al correo con el que se acaba de registrar, y revisar el mensaje que viene con instrucciones para poder verificar su cuenta.</p>
+<div *ngIf="user$ | async as user; else loading">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="text-uppercase mb-4">Verifica tu cuenta</h1>
 
-        <p>Una vez verificada, ya podrá ingresar a la aplicación con su correo y contraseña.</p>
+          <p>Sr. Usuario con el correo <strong>{{user?.email}}</strong>: Su misión, que deberá aceptar, es ir al correo
+            con el que se acaba de registrar, y revisar el mensaje que viene con instrucciones para poder verificar su
+            cuenta.</p>
 
-        <p>Si no le llegó, presione el botón de abajo para reenviar el mensaje de verificación.</p>
+          <p>Una vez verificada, ya podrá ingresar a la aplicación con su correo y contraseña.</p>
 
-        <p>No se preocupe: Ese mensaje no se autodestruirá en 5 segundos.</p>
+          <p>Si no le llegó, presione el botón de abajo para reenviar el mensaje de verificación.</p>
 
-        <hr />
+          <p>No se preocupe: Ese mensaje no se autodestruirá en 5 segundos.</p>
 
-        <a href="#" class="btn btn-primary btn-lg btn-block text-uppercase" [routerLink]="['/home']">
-          Reenviar correo de verificación
-        </a>
+          <hr />
+
+          <a href="#" class="btn btn-primary btn-lg btn-block text-uppercase" (click)="resendVerificationEmail()">
+            Reenviar correo de verificación
+          </a>
+        </div>
       </div>
     </div>
   </div>
